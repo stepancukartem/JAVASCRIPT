@@ -248,3 +248,5 @@ function sumDigits(n)
 let digitNumber = +prompt("Введіть число:");
 
 alert(`Сума цифр: ${sumDigits(digitNumber)}`);
+alert(`Сума цифр: ${sumDigits(digitNumber)}`);
+//jdhjhjdhskdshd
