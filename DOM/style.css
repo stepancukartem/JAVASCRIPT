@@ -1,0 +1,50 @@
+body{
+    font-family: Arial;
+    text-align: center;
+}
+
+.buttons{
+    margin: 20px;
+}
+
+.buttons button{
+    width: 70px;
+    height: 70px;
+
+    margin: 5px;
+
+    border-radius: 15px;
+    border: 1px solid gray;
+
+    background: white;
+
+    cursor: pointer;
+}
+
+.buttons img{
+    width: 45px;
+    height: 45px;
+}
+
+#products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card{
+    width: 120px;
+
+    border: 1px solid gray;
+
+    border-radius: 15px;
+
+    margin: 10px;
+
+    padding: 10px;
+}
+
+.card img{
+    width: 70px;
+    height: 70px;
+}
