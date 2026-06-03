@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog API</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div style="text-align:center;">
+        <h1>Список порід собак</h1>
+
+        <button onclick="fetchDogBreeds()" class="custom-button">
+            Завантажити породи
+        </button>
+
+        <ul id="breed-list"></ul>
+    </div>
+
+    <hr>
+
+    <div style="text-align:center;">
+        <h1>Фото песика</h1>
+
+        <img
+            id="dogImg"
+            src=""
+            alt="Фото песика"
+            height="500"
+        >
+
+        <br><br>
+
+        <button onclick="getNewDogImage()" class="custom-button">
+            Новий песик
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
