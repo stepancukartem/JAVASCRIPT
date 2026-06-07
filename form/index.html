@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Практична робота</title>
+</head>
+<body>
+
+<h2>Завдання 1</h2>
+
+<form onsubmit="login(event)">
+    <input type="text" id="login" placeholder="Логін">
+    <br><br>
+
+    <input type="password" id="password" placeholder="Пароль">
+    <br><br>
+
+    <label>
+        <input type="checkbox">
+        Запам'ятати мене
+    </label>
+
+    <br><br>
+
+    <button type="submit">Увійти</button>
+</form>
+
+<hr>
+
+<h2>Завдання 2</h2>
+
+<form onsubmit="register(event)">
+    <input type="email" id="email" placeholder="Email">
+    <br><br>
+
+    <input type="text" id="userLogin" placeholder="Логін">
+    <br><br>
+
+    <input type="password" id="pass1" placeholder="Пароль">
+    <br><br>
+
+    <input type="password" id="pass2" placeholder="Повторіть пароль">
+    <br><br>
+
+    <button type="submit">Зареєструватися</button>
+</form>
+
+<hr>
+
+<h2>Завдання 3</h2>
+
+<form onsubmit="saveForm(event)">
+    Ім'я:
+    <input type="text" id="fname">
+    <br><br>
+
+    Прізвище:
+    <input type="text" id="lname">
+    <br><br>
+
+    Дата народження:
+    <input type="date" id="birthday">
+    <br><br>
+
+    Країна:
+    <input type="text" id="country">
+    <br><br>
+
+    Місто:
+    <input type="text" id="city">
+    <br><br>
+
+    Навички:
+    <input type="checkbox" value="HTML">HTML
+    <input type="checkbox" value="CSS">CSS
+    <input type="checkbox" value="JS">JS
+
+    <br><br>
+
+    <button type="submit">Зберегти</button>
+</form>
+
+<br>
+
+<div id="result"></div>
+
+<hr>
+
+<h2>Завдання 4</h2>
+
+R <input type="number" id="r" min="0" max="255">
+G <input type="number" id="g" min="0" max="255">
+B <input type="number" id="b" min="0" max="255">
+
+<button onclick="addColor()">Add color</button>
+
+<hr>
+
+<div id="colors"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
