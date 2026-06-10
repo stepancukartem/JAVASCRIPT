@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Colors</title>
+</head>
+<body>
+
+<h2>Create new color</h2>
+
+<form onsubmit="addColor(event)">
+
+<p>Color:</p>
+<input type="text" id="colorName">
+
+<p>Type:</p>
+<select id="colorType">
+    <option>RGB</option>
+    <option>RGBA</option>
+    <option>HEX</option>
+</select>
+
+<p>Code:</p>
+<input type="text" id="colorCode">
+
+<br><br>
+
+<button type="submit">Save</button>
+
+</form>
+
+<hr>
+
+<h3>All colors</h3>
+
+<div id="colors"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
