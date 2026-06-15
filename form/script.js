@@ -1,63 +1,172 @@
-function login(event)
+let colors = [
 {
-    event.preventDefault();
-
-    const login =
-        document.getElementById("login").value;
-
-    alert(`Привіт, ${login}!`);
-}
-
-function register(event)
+    name:"YELLOWGREEN",
+    type:"RGB",
+    code:"154,205,50"
+},
 {
-    event.preventDefault();
-
-    alert("На пошту надіслано лист підтвердження");
-}
-
-function saveForm(event)
+    name:"DARKCYAN",
+    type:"RGB",
+    code:"0,139,139"
+},
 {
-    event.preventDefault();
-
-    const skills =
-        [...document.querySelectorAll('input[type="checkbox"]:checked')]
-        .map(x => x.value)
-        .join(", ");
-
-    document.getElementById("result").innerHTML = `
-    <table border="1">
-        <tr><td>Firstname</td><td>${fname.value}</td></tr>
-        <tr><td>Lastname</td><td>${lname.value}</td></tr>
-        <tr><td>Birthday</td><td>${birthday.value}</td></tr>
-        <tr><td>Country</td><td>${country.value}</td></tr>
-        <tr><td>City</td><td>${city.value}</td></tr>
-        <tr><td>Skills</td><td>${skills}</td></tr>
-    </table>
-    `;
+    name:"ORANGERED",
+    type:"HEX",
+    code:"#FF4500"
 }
+];
+
+loadCookie();
+showColors();
 
 function addColor()
 {
-    const r = document.getElementById("r").value;
-    const g = document.getElementById("g").value;
-    const b = document.getElementById("b").value;
+    const name =
+    document.getElementById("name")
+    .value
+    .trim()
+    .toUpperCase();
 
-    const color = `rgb(${r}, ${g}, ${b})`;
+    const type =
+    document.getElementById("type")
+    .value;
 
-    const div = document.createElement("div");
+    const code =
+    document.getElementById("code")
+    .value
+    .trim();
 
-    div.style.display = "inline-block";
-    div.style.margin = "5px";
-    div.style.padding = "10px";
-    div.style.border = "1px solid black";
+    const error =
+    document.getElementById("error");
 
-    div.innerHTML =
-    `<span style="
-    display:inline-block;
-    width:20px;
-    height:20px;
-    background:${color};
-    "></span> ${color}`;
+    error.textContent = "";
 
-    document.getElementById("colors").appendChild(div);
+    if(!/^[A-Z]+$/.test(name))
+    {
+        error.textContent =
+        "Color can only contain letters";
+        return;
+    }
+
+    if(colors.some(c=>c.name===name))
+    {
+        error.textContent =
+        "Color already exists";
+        return;
+    }
+
+    if(type==="RGB")
+    {
+        const rgb =
+        /^(\d{1,3}),(\d{1,3}),(\d{1,3})$/;
+
+        if(!rgb.test(code))
+        {
+            error.textContent =
+            "RGB format: 255,255,255";
+            return;
+        }
+    }
+
+    if(type==="RGBA")
+    {
+        const rgba =
+        /^(\d{1,3}),(\d{1,3}),(\d{1,3}),(0|0?\.\d+|1)$/;
+
+        if(!rgba.test(code))
+        {
+            error.textContent =
+            "RGBA format: 255,255,255,0.5";
+            return;
+        }
+    }
+
+    if(type==="HEX")
+    {
+        const hex =
+        /^#[0-9A-Fa-f]{6}$/;
+
+        if(!hex.test(code))
+        {
+            error.textContent =
+            "HEX format: #FF4500";
+            return;
+        }
+    }
+
+    colors.push({
+        name,
+        type,
+        code
+    });
+
+    saveCookie();
+    showColors();
+
+    document.getElementById("name").value="";
+    document.getElementById("code").value="";
+}
+
+function showColors()
+{
+    const div =
+    document.getElementById("colors");
+
+    div.innerHTML="";
+
+    colors.forEach(color=>{
+
+        const card =
+        document.createElement("div");
+
+        card.className="color-card";
+
+        let bg;
+
+        if(color.type==="HEX")
+            bg=color.code;
+        else
+            bg=`${color.type.toLowerCase()}(${color.code})`;
+
+        card.style.background=bg;
+
+        card.innerHTML=
+        `<div>${color.name}</div>
+         <div>${color.code}</div>`;
+
+        div.appendChild(card);
+    });
+}
+
+function saveCookie()
+{
+    const date = new Date();
+
+    date.setHours(date.getHours()+3);
+
+    document.cookie =
+    "colors="+
+    encodeURIComponent(JSON.stringify(colors))
+    +
+    ";expires="+
+    date.toUTCString()+
+    ";path=/";
+}
+
+function loadCookie()
+{
+    const cookie =
+    document.cookie
+    .split("; ")
+    .find(row =>
+    row.startsWith("colors="));
+
+    if(cookie)
+    {
+        colors =
+        JSON.parse(
+        decodeURIComponent(
+        cookie.split("=")[1]
+        ));
+    }
 }
