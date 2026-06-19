@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>MY WEATHER</h1>
+
+    <div class="search">
+        <input type="text" id="cityInput" placeholder="Введіть місто">
+        <button onclick="getWeather()">Пошук</button>
+    </div>
+
+    <div class="tabs">
+        <button onclick="showToday()">Today</button>
+        <button onclick="showForecast()">5 Day Forecast</button>
+    </div>
+
+    <div id="todayBlock"></div>
+
+    <div id="forecastBlock" style="display:none;"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
